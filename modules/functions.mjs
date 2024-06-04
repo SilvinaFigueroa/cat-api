@@ -37,20 +37,17 @@ export async function getData(apiUrl, container, limit) {
                     $(this).toggleClass("fa-heart-o fa-heart");
                 });
 
-                // favBtn.textContent = "Add to Favorites";
-                // favBtn.classList.add("btn-success");
-
                 // add event listener to the favBtn on each image
-                // favBtn.addEventListener('click', () => {
-                //     addFavorite(image.id,'silvina_324')     
-                // })
+                icon.addEventListener('click', () => {
+                    addFavorite(image.id,'silvina_324')     
+                })
 
                 imgContainer.classList.add("img-container");
                 imgContainer.style.backgroundImage = `url(${image.url})`;
 
                 // add elements to the container
-                imgContainer.appendChild(icon);
-                imgContainer.appendChild(caption);
+                // imgContainer.appendChild(caption);
+                imgContainer.append(caption,icon);
 
                 // add image to container-grid
                 container.appendChild(imgContainer);
@@ -72,30 +69,4 @@ export async function getData(apiUrl, container, limit) {
 }
 
 
-async function addFavorite(imageId, user) {
-    const apiUrl = "https://api.thecatapi.com/v1/favourites";
-
-    const body = {
-        image_id: imageId,
-        sub_id: user,
-    };
-
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': apiKey
-            },
-            body: JSON.stringify(body)
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        window.alert(`Cat added to your favorites!`);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
 
