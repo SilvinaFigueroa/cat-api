@@ -1,4 +1,4 @@
-# Vote Your Favorite Cat
+# Your Favorite Cat
 
 This project allows users to view cat images and add their favorite ones to a list using The Cat API.
 
