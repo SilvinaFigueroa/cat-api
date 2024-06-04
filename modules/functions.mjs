@@ -14,7 +14,6 @@ export async function getData(apiUrl, container, limit) {
             const data = await result.json()
             let imagesData = data;
 
-            console.log(imagesData)
             console.log(`Image URL: ${imagesData.url}`);
 
             for (let image of imagesData) {
@@ -23,14 +22,20 @@ export async function getData(apiUrl, container, limit) {
                 // use figure caption to show some info of each pic
                 let imgContainer = document.createElement('figure');
                 let caption = document.createElement("figcaption")
-                
-                caption.classList.add("bg-primary")
-                caption.classList.add("badge")
-                caption.classList.add("rounded-pill")
+
+                caption.classList.add("bg-primary", "badge", "rounded-pill")
                 caption.style.marginLeft = "5px"
                 caption.style.color = "white"
 
-                // let favBtn = document.createElement('button')
+                // create heart icon
+                let icon = document.createElement('i');
+                icon.classList.add("fa", "fa-heart-o", "heart-icon");
+                
+
+                // toggle classes for icon using jQuery
+                $(icon).click(function () {
+                    $(this).toggleClass("fa-heart-o fa-heart");
+                });
 
                 // favBtn.textContent = "Add to Favorites";
                 // favBtn.classList.add("btn-success");
@@ -40,6 +45,16 @@ export async function getData(apiUrl, container, limit) {
                 //     addFavorite(image.id,'silvina_324')     
                 // })
 
+                imgContainer.classList.add("img-container");
+                imgContainer.style.backgroundImage = `url(${image.url})`;
+
+                // add elements to the container
+                imgContainer.appendChild(icon);
+                imgContainer.appendChild(caption);
+
+                // add image to container-grid
+                container.appendChild(imgContainer);
+
                 // Double check if the breed exist for the cat
                 if (image.breeds && image.breeds.length > 0 && image.breeds[0].name) {
                     let breed = image.breeds[0].name
@@ -47,14 +62,6 @@ export async function getData(apiUrl, container, limit) {
                 } else {
                     caption.textContent = "a cat!";
                 }
-
-                imgContainer.classList.add("img-container");
-                imgContainer.style.backgroundImage = `url(${image.url})`;
-
-                // add elements to the container
-                // imgContainer.appendChild(favBtn);
-                imgContainer.appendChild(caption);
-                container.appendChild(imgContainer);
             }
 
         } catch (error) {
@@ -63,6 +70,7 @@ export async function getData(apiUrl, container, limit) {
     }
 
 }
+
 
 async function addFavorite(imageId, user) {
     const apiUrl = "https://api.thecatapi.com/v1/favourites";
