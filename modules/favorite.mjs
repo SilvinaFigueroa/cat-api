@@ -1,6 +1,6 @@
 
 
-async function addFavorite(imageId, user) {
+export async function addFavorite(imageId, user, apiKey) {
     const apiUrl = "https://api.thecatapi.com/v1/favourites";
 
     const body = {
@@ -21,7 +21,7 @@ async function addFavorite(imageId, user) {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        // window.alert(`Cat added to your favorites!`);
+        else{console.log(`cat ${imageId} added to favorites. Status ${response.status}`)}
     } catch (error) {
         console.error('Error:', error);
     }

@@ -1,4 +1,4 @@
-import { getData} from './functions.mjs';
+import { getData} from './getData.mjs';
 
 let form = document.getElementById("user-form")
 let container = document.createElement('div')

@@ -1,3 +1,5 @@
+import {addFavorite} from './favorite.mjs';
+
 const apiKey = "live_e1BMmszfSiB6rEo5FRqldauZS59VNCYcBnGzi1ukunpJVGk7UjhXMTDijkR1VdHp"
 
 
@@ -39,7 +41,7 @@ export async function getData(apiUrl, container, limit) {
 
                 // add event listener to the favBtn on each image
                 icon.addEventListener('click', () => {
-                    addFavorite(image.id,'silvina_324')     
+                    addFavorite(image.id,'silvina_324', apiKey)     
                 })
 
                 imgContainer.classList.add("img-container");
