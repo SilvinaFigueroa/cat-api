@@ -54,3 +54,17 @@ body{
     margin-top: 5px;
     margin-right: 5px;
 }
+
+
+@media (max-width: 600px) {
+
+    .container, #body-container{
+        margin-left: 4%;
+        margin-right: 4%;    
+    }
+
+    .img-container{
+        width: 200px;
+        height: 200px;
+    }
+}
