@@ -8,10 +8,10 @@ container.classList.add("container")
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    let limit = event.target.elements["limit"].value;
-    let apiUrl = `https://api.thecatapi.com/v1/images/search?limit=${limit}`;
+    let catNum = event.target.elements["catNum"].value;
+    let apiUrl = `https://api.thecatapi.com/v1/images/search?has_breeds=true?`;
 
-    getData(apiUrl, container);
+    getData(apiUrl, container, catNum);
 })
 
 

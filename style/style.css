@@ -1,7 +1,11 @@
 
+body{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 
-#body-container{
-    margin-top: 100px;
 }
 
 .container {
@@ -20,18 +24,5 @@
     margin: 5px;
     border: 1px solid #f6dcdc;
     border-radius: 10px;
-    /* for captions content: */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
 }
 
-.figure-caption {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    width: 100%;
-    text-align: center;
-    padding: 5px 0;
-    justify-content: flex-end;
-
-}
